@@ -1,0 +1,22 @@
+<div *ngIf="pokemonsLoaded && pokemons" class="card-columns">
+    <div *ngFor="let pokemon of pokemons.results | search: query | typeFilter: typeFilters | abilitiesFilter: abilityFilters" class="card mb-50">
+        <h3 class="card-header">Name: {{ pokemon.name | titlecase }}</h3>
+        <div class="card-body">
+            <h5 class="card-title">Pokemon ID: {{ pokemon.id }}</h5>
+        </div>
+        <img style="height: 200px; width: 100%; display: block;" src="{{ pokemon.details.sprites.front_default}}" alt=" {{ pokemon.name }}">
+        <div class="card-body">
+            <p class="card-text">Description</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Height: {{ pokemon.id }}</li>
+            <li class="list-group-item">Weight: {{ pokemon.id }}</li>
+        </ul>
+        <div class="card-body">
+            <div *ngFor="let type of pokemon.details.types">
+                <span class="badge badge-primary" [style.background]="_getTypeColour(type.type.name)">{{ type.type.name | titlecase }}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
